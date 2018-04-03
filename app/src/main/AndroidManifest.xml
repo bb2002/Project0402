@@ -19,6 +19,11 @@
 
         <activity android:name=".views.activitys.MainActivity"
             android:enabled="true" />
+
+        <meta-data android:name="com.kakao.sdk.AppKey"
+            android:value="287b2db3fccf3b00205e17fdbfc41cf7" />
     </application>
+
+
 
 </manifest>
