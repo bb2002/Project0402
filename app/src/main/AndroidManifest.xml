@@ -29,6 +29,9 @@
         <activity android:name=".views.activitys.AddCommandActivity"
             android:enabled="true" />
 
+        <activity android:name=".views.activitys.AddVoiceCommandActivity"
+            android:enabled="true" />
+
         <activity android:name=".views.activitys.ListCommandActivity"
             android:enabled="true" />
 
