@@ -1,3 +1,28 @@
 <resources>
     <string name="app_name">Project0402</string>
+
+    <!-- Splalsh Activity -->
+    <string name="splash_status_default">어플리케이션 로드 중 ...</string>
+    <string name="splash_status_checkinternet">네트워크 상태 확인 중 ...</string>
+    <string name="splash_status_kakaologin">카카오 계정 정보 확인 중 ...</string>
+    <string name="splash_status_newuser">첫 사용을 환영합니다.</string>
+    <string name="splash_status_welcome">환영합니다.</string>
+    <string name="splash_status_reloadpin">PIN 재정의 중 ...</string>
+    <string name="splash_status_updatedata">사용자 데이터 갱신 중 ...</string>
+    <string name="splash_status_clienterr">스크립트 실행에 오류가 발생헀습니다.</string>
+    <string name="splash_status_pinerr">인증서가 일치하지 않습니다.\n앱을 다시 시작하세요.</string>
+
+
+
+
+
+    <!-- Default messages -->
+    <string name="fatal_error">치명적 오류!</string>
+    <string name="error_no_internet">네트워크가 없습니다.\n인터넷 연결을 확인해주세요.</string>
+    <string name="kakaologin_failed_reason">카카오 로그인 실패 \n</string>
+    <string name="kakaologin_failed_noreason">알 수 없는 이유로 로그인에 실패했습니다.</string>
+    <string name="kakaologin_failed_userstop">카카오톡 로그인이 완료되지 않았습니다.\n다시 시도하세요.</string>
+    <string name="http_client_error">클라이언트 요청 오류!</string>
+    <string name="now_loading">Now loading...</string>
+    <string name="server_regular_check">서버가 점검 중 입니다.\n나중에 다시 시도하세요.</string>
 </resources>
