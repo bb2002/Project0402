@@ -55,8 +55,6 @@ public class HttpWork extends Work<HttpWork.HttpResponse> {
             Response response = client.newCall(request).execute();
             String jsonScript = response.body().string();
 
-            Log.d("p0402", jsonScript);
-
             JSONObject responseObj = new JSONObject(jsonScript);
             httpResponseObj = new HttpResponse(responseObj, HttpCodes.HTTP_OK);
 
