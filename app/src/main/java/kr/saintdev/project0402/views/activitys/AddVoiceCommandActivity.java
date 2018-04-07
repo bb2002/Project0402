@@ -15,24 +15,36 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import kr.saintdev.project0402.R;
+import kr.saintdev.project0402.modules.defines.HttpUrlDefines;
+import kr.saintdev.project0402.modules.secure.auth.Authme;
+import kr.saintdev.project0402.modules.workspace.task.OnWorkTaskListener;
+import kr.saintdev.project0402.modules.workspace.task.SingleWorkTask;
+import kr.saintdev.project0402.modules.workspace.work.Work;
+import kr.saintdev.project0402.modules.workspace.work.implem.HttpWork;
+import kr.saintdev.project0402.views.windows.progress.ProgressManager;
 
 /**
  * Created by 5252b on 2018-04-04.
  */
 
 public class AddVoiceCommandActivity extends AppCompatActivity {
+    // View 개체
     TextView commandView = null;
     ImageButton microPhoneButton = null;    // 마이크
     TextView statusView = null;     // 마이크에 대한 상태 표시기
     Button commitButton = null;     // 확인 버튼 겸 스테이터스 바
 
+    // 입력 받은 데이터
     String command = null;
-
     ArrayList<String> linkSentence = new ArrayList<>(); // 입력 받은 stt 문장
     Intent stt = null;
     SpeechRecognizer recognizer = null;
+
+    // 사용자에게 진행 상태를 알리기 위한 다이얼로그
+    ProgressManager pm = null;
 
     int count = 0;
 
@@ -46,6 +58,7 @@ public class AddVoiceCommandActivity extends AppCompatActivity {
         this.microPhoneButton = findViewById(R.id.voicecmd_write);
         this.statusView = findViewById(R.id.voicecmd_status);
         this.commitButton = findViewById(R.id.voicecmd_ok);
+        this.pm = new ProgressManager(this);
 
         // 핸들링 정의
         OnButtonClickHandler handler = new OnButtonClickHandler();
@@ -63,7 +76,12 @@ public class AddVoiceCommandActivity extends AppCompatActivity {
 
         this.recognizer = SpeechRecognizer.createSpeechRecognizer(this);
         this.recognizer.setRecognitionListener(new RecognizerHandler());
+    }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        this.recognizer.destroy();
     }
 
     class OnButtonClickHandler implements View.OnClickListener {
@@ -74,9 +92,41 @@ public class AddVoiceCommandActivity extends AppCompatActivity {
                     recognizer.startListening(stt);
                     break;
                 case R.id.voicecmd_ok:
+                    if(linkSentence.size() != 0) {
+                        // 입력 받은 데이터를 서버로 보낸다.
+                        commit();
+                    } else {
+                        Toast.makeText(getApplicationContext(), "한번 이상 입력하세요.", Toast.LENGTH_LONG).show();
+                    }
+
                     break;
             }
         }
+    }
+
+    // 수집된 데이터를 서버로 보냅니다.
+    private void commit() {
+        StringBuilder argsBuilder = new StringBuilder();
+
+        for(String s : linkSentence) {
+            argsBuilder.append(s);
+            argsBuilder.append(",");
+        }
+
+        Authme me = Authme.getInstance(this);
+
+        HashMap<String, Object> args = new HashMap<>();
+        args.put("user_pin", me.getPin());
+        args.put("args", argsBuilder.toString());
+        args.put("command", this.command);
+
+        HttpWork work = new HttpWork(HttpUrlDefines.ADD_COMMAND, args);
+
+        SingleWorkTask task = new SingleWorkTask(new OnCommandAddedListener());
+        task.execute(work);
+
+        this.pm.setMessage("Execute...");
+        this.pm.enable();
     }
 
     class RecognizerHandler implements RecognitionListener {
@@ -132,7 +182,8 @@ public class AddVoiceCommandActivity extends AppCompatActivity {
             }
 
             if(count == 10) {
-                Toast.makeText(getApplicationContext(), "완료 ! 총 : " + linkSentence.size() + " 개의 데이터가 모였읍니다.", Toast.LENGTH_SHORT).show();
+                microPhoneButton.setVisibility(View.INVISIBLE);
+
             }
 
             commitButton.setText(++count + "/10 - 총 ");
@@ -145,6 +196,32 @@ public class AddVoiceCommandActivity extends AppCompatActivity {
 
         @Override
         public void onEvent(int eventType, Bundle params) {
+
+        }
+    }
+
+    class OnCommandAddedListener implements OnWorkTaskListener {
+        @Override
+        public void onTaskListener(Work[] result) {
+            pm.disable();
+
+            HttpWork work = (HttpWork) result[0];
+            HttpWork.HttpResponse resp = work.getResultObject();
+
+            Log.d("P0402", "COde : " + resp.getResponseCode());
+
+            if(resp.getResponseCode() == HttpWork.HttpCodes.HTTP_OK) {
+                // 처리 성공
+                Toast.makeText(getApplicationContext(), "추가되었습니다.", Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(getApplicationContext(), "오류가 발생했습니다.", Toast.LENGTH_LONG).show();
+            }
+
+            finish();
+        }
+
+        @Override
+        public void onProcessedUpdate(int now, int all) {
 
         }
     }

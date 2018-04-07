@@ -9,4 +9,6 @@ public interface HttpUrlDefines {
 
     String SECURE_CREATE_ACCOUNT = TARGET_SERVER + "secure/join.php";
     String SECURE_AUTHME_ACCOUNT = TARGET_SERVER + "secure/auth.php";
+
+    String ADD_COMMAND = TARGET_SERVER + "service/add-command.php";
 }

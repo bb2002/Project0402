@@ -1,5 +1,7 @@
 package kr.saintdev.project0402.modules.workspace.work.implem;
 
+import android.util.Log;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -53,6 +55,8 @@ public class HttpWork extends Work<HttpWork.HttpResponse> {
             Response response = client.newCall(request).execute();
             String jsonScript = response.body().string();
 
+            Log.d("p0402", jsonScript);
+
             JSONObject responseObj = new JSONObject(jsonScript);
             httpResponseObj = new HttpResponse(responseObj, HttpCodes.HTTP_OK);
 
@@ -88,6 +92,18 @@ public class HttpWork extends Work<HttpWork.HttpResponse> {
         // 서버에게 요청을 성공 했읍니까?
         public int getRequestResultCode() {
             return responseCode;
+        }
+
+        // 서버 응답 결고
+        public int getResponseCode() {
+            try {
+                JSONObject header = this.responseObject.getJSONObject("header");
+                return header.getInt("code");
+            } catch(JSONException jex) {
+                jex.printStackTrace();
+            }
+
+            return HttpCodes.CLIENT_REQUEST_EXCEPTION;
         }
     }
 
