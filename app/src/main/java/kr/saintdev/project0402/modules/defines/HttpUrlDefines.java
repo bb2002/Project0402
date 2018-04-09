@@ -10,5 +10,6 @@ public interface HttpUrlDefines {
     String SECURE_CREATE_ACCOUNT = TARGET_SERVER + "secure/join.php";
     String SECURE_AUTHME_ACCOUNT = TARGET_SERVER + "secure/auth.php";
 
-    String ADD_COMMAND = TARGET_SERVER + "service/add-command.php";
+    String ADD_COMMAND = TARGET_SERVER + "service/add-command.php";     // 명령어 추가
+    String LIST_COMMAND = TARGET_SERVER + "service/list-command.php";   // 명령어 목록 조회
 }
