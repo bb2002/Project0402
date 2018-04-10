@@ -37,6 +37,9 @@
         <activity android:name=".views.activitys.ListCommandActivity"
             android:enabled="true" />
 
+        <activity android:name=".views.activitys.WriteVoiceCommandActivity"
+            android:enabled="true" />
+
         <meta-data android:name="com.kakao.sdk.AppKey"
             android:value="287b2db3fccf3b00205e17fdbfc41cf7" />
     </application>

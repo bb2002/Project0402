@@ -1,9 +1,11 @@
 package kr.saintdev.project0402.views.activitys;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -49,6 +51,13 @@ public class ListCommandActivity extends AppCompatActivity {
         this.adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1);
 
         this.commandList.setAdapter(this.adapter);
+        this.startVoiceCommand.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), WriteVoiceCommandActivity.class);
+                startActivity(intent);
+            }
+        });
 
         // 명령 목록을 불러옵니다.
         // 내 계정을 불러옵니다.
@@ -75,17 +84,35 @@ public class ListCommandActivity extends AppCompatActivity {
                 JSONObject response = work.getResultObject().getJsonObject();
 
                 try {
-                    JSONArray orignCommands = response.getJSONArray("orign");
-                    JSONArray ids = response.getJSONArray("id");
+                    // Body 를 가져옵니다.
+                    JSONObject body = response.getJSONObject("body");
+                    JSONArray orignCommands = body.getJSONArray("orign");
+
+                    // ListView 에 넣습니다.
+                    adapter.clear();
+                    for(int i = 0; i < orignCommands.length(); i ++) {
+                        adapter.add(orignCommands.getString(i));
+                    }
                 } catch(JSONException jex) {
                     jex.printStackTrace();
                 }
+
+                adapter.notifyDataSetChanged();
             } else {
                 // 요청 오류
                 dm.setTitle("Fatal error.");
                 dm.setDescription("데이터 요청에 실패했습니다!");
                 dm.setOnYesButtonClickListener(this, "확인");
                 dm.show();
+            }
+
+            if(adapter.getCount() == 0) {
+                // 명령어가 전혀 없을 경우
+                startVoiceCommand.setEnabled(false);
+                startVoiceCommand.setText("음성 명령을 추가하면 활성화됩니다.");
+            } else {
+                startVoiceCommand.setEnabled(true);
+                startVoiceCommand.setText("음성 명령 실행");
             }
         }
 
@@ -96,7 +123,7 @@ public class ListCommandActivity extends AppCompatActivity {
 
         @Override
         public void onClick(DialogInterface dialog) {
-
+            dialog.dismiss();
         }
     }
 }
