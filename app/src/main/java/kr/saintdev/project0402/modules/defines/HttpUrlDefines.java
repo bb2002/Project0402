@@ -12,4 +12,5 @@ public interface HttpUrlDefines {
 
     String ADD_COMMAND = TARGET_SERVER + "service/add-command.php";     // 명령어 추가
     String LIST_COMMAND = TARGET_SERVER + "service/list-command.php";   // 명령어 목록 조회
+    String EXECUTE_COMMAND = TARGET_SERVER + "service/execute-command.php";     // 가장 유사한 명령어 검색
 }
