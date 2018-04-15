@@ -32,7 +32,7 @@ import kr.saintdev.project0402.modules.workspace.work.implem.HttpWork;
  * Created by 5252b on 2018-04-11.
  */
 
-public class WriteVoiceCommandActivity extends AppCompatActivity {
+public class LinkVoiceCommandActivity extends AppCompatActivity {
     TextView statusView = null;
     ImageButton microPhoneButton = null;
 
@@ -68,6 +68,12 @@ public class WriteVoiceCommandActivity extends AppCompatActivity {
         super.onResume();
         // 화면이 보여지면 실행한다.
         this.recognizer.startListening(this.stt);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        recognizer.destroy();
     }
 
     class RecognizerHandler implements RecognitionListener, OnWorkTaskListener {
@@ -157,9 +163,16 @@ public class WriteVoiceCommandActivity extends AppCompatActivity {
                 // 데이터를 잘 불러왔는지 확인
                 boolean isSuccess = body.getBoolean("is_success");
                 if(isSuccess) {
+                    String command = body.getString("command");
 
+                    // 커맨드 실행창을 엽니다.
+                    Intent runActivity = new Intent(getApplicationContext(), CommandPlayActivity.class);
+                    runActivity.putExtra("command", command);
+                    startActivity(runActivity);
+
+                    finish();
                 } else {
-                    Toast.makeText(getApplicationContext(), "비슷한 명령어가 없는거 같습니다.", Toast.LENGTH_SHORT).show();
+                    statusView.setText("유사 명령을 찾을 수 없슴.");
                 }
             } catch(JSONException jex) {
                 jex.printStackTrace();

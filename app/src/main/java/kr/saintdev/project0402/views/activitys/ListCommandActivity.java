@@ -54,7 +54,7 @@ public class ListCommandActivity extends AppCompatActivity {
         this.startVoiceCommand.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), WriteVoiceCommandActivity.class);
+                Intent intent = new Intent(getApplicationContext(), LinkVoiceCommandActivity.class);
                 startActivity(intent);
             }
         });

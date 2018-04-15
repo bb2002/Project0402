@@ -176,9 +176,10 @@ public class AddVoiceCommandActivity extends AppCompatActivity {
             }
 
             // 데이터 삽입
-            String insertData = mResult.get(0); // 입력받은 데이터
-            if(!linkSentence.contains(insertData)) {
-                linkSentence.add(insertData);   // 있는 데이터라면 넘어갑니다
+            for(String s : mResult) {
+                if(!linkSentence.contains(s)) {
+                    linkSentence.add(s);   // 있는 데이터라면 넘어갑니다
+                }
             }
 
             if(count == 10) {
@@ -207,8 +208,6 @@ public class AddVoiceCommandActivity extends AppCompatActivity {
 
             HttpWork work = (HttpWork) result[0];
             HttpWork.HttpResponse resp = work.getResultObject();
-
-            Log.d("P0402", "COde : " + resp.getResponseCode());
 
             if(resp.getResponseCode() == HttpWork.HttpCodes.HTTP_OK) {
                 // 처리 성공

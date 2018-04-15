@@ -3,7 +3,6 @@
     package="kr.saintdev.project0402">
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
 
     <application
@@ -37,7 +36,10 @@
         <activity android:name=".views.activitys.ListCommandActivity"
             android:enabled="true" />
 
-        <activity android:name=".views.activitys.WriteVoiceCommandActivity"
+        <activity android:name=".views.activitys.LinkVoiceCommandActivity"
+            android:enabled="true" />
+
+        <activity android:name=".views.activitys.CommandPlayActivity"
             android:enabled="true" />
 
         <meta-data android:name="com.kakao.sdk.AppKey"

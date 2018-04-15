@@ -78,7 +78,6 @@ public class SocialLoginActivity extends AppCompatActivity {
         public void onSessionOpenFailed(KakaoException exception) {
             // 세션을 못열었다.
             // 취소한거 같다.
-            Log.e("ST", exception.getMessage());
 
             setResult(RESULT_CANCELED);
             finish();
