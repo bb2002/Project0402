@@ -23,9 +23,9 @@ import kr.saintdev.project0402.modules.workspace.task.OnWorkTaskListener;
 import kr.saintdev.project0402.modules.workspace.task.SingleWorkTask;
 import kr.saintdev.project0402.modules.workspace.work.Work;
 import kr.saintdev.project0402.modules.workspace.work.implem.HttpWork;
-import kr.saintdev.project0402.views.windows.dialogs.main.DialogManager;
-import kr.saintdev.project0402.views.windows.dialogs.main.clicklistener.OnYesClickListener;
-import kr.saintdev.project0402.views.windows.progress.ProgressManager;
+import kr.saintdev.project0402.views.window.dialog.DialogManager;
+import kr.saintdev.project0402.views.window.dialog.clicklistener.OnYesClickListener;
+import kr.saintdev.project0402.views.window.progress.ProgressManager;
 
 /**
  * Created by 5252b on 2018-04-04.

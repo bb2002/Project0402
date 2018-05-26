@@ -1,4 +1,4 @@
-package kr.saintdev.project0402.views.windows.progress;
+package kr.saintdev.project0402.views.window.progress;
 
 import android.app.ProgressDialog;
 import android.content.Context;

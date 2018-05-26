@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Project0402</string>
+    <string name="app_name">Narre</string>
 
     <!-- Splalsh Activity -->
     <string name="splash_status_default">어플리케이션 로드 중 ...</string>

@@ -1,4 +1,4 @@
-package kr.saintdev.project0402.modules.secure.kakaologin;
+package kr.saintdev.project0402.modulesv2.components.kakao;
 
 import android.app.Application;
 

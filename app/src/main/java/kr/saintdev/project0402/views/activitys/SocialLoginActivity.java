@@ -36,19 +36,6 @@ public class SocialLoginActivity extends AppCompatActivity {
         this.callback = new SessionCallback();
         Session.getCurrentSession().addCallback(this.callback);
         Session.getCurrentSession().checkAndImplicitOpen();
-
-        try {
-            PackageInfo info = getPackageManager().getPackageInfo("kr.saintdev.project0402", PackageManager.GET_SIGNATURES);
-            for (Signature signature : info.signatures) {
-                MessageDigest md = MessageDigest.getInstance("SHA");
-                md.update(signature.toByteArray());
-                Log.d("P0402","key_hash="+ Base64.encodeToString(md.digest(), Base64.DEFAULT));
-            }
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        }
     }
 
     @Override
