@@ -4,14 +4,79 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="kr.saintdev.project0402.SplashActivity">
+    android:background="@color/colorPrimary">
 
-    <include
-        layout="@layout/layout_actionbar"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/main_title"
+        android:text="Narre"
+        android:textColor="@color/color_white"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="32dp"
+        android:textSize="24sp"/>
+
+    <View
         android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:layout_alignParentTop="true" />
+        android:layout_height="1dp"
+        android:background="@color/color_white"
+        android:layout_below="@id/main_title"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:id="@+id/main_buttons_container"
+        android:orientation="horizontal"
+        android:layout_margin="24dp"
+        android:layout_centerVertical="true">
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/main_buttons_addcommand"
+            android:src="@drawable/ic_add"
+            android:background="@null"
+            android:scaleType="centerInside"
+            android:padding="32dp"
+            android:layout_marginEnd="8dp"/>
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:id="@+id/main_buttons_listcommand"
+            android:src="@drawable/ic_list"
+            android:background="@null"
+            android:scaleType="centerInside"
+            android:padding="32dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_below="@id/main_buttons_container">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="새 명령어 추가"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/color_white"
+            android:layout_marginEnd="8dp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="기존 명령어 목록"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/color_white"/>
+    </LinearLayout>
+
+<!--
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -29,6 +94,6 @@
             android:layout_height="wrap_content"
             android:id="@+id/main_buttons_listcommand"
             android:text="명령어 목록"/>
-    </LinearLayout>
+    </LinearLayout> -->
 
 </RelativeLayout>

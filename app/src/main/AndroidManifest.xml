@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".views.activitys.MainActivity"
+        <activity android:name=".views.activitysv2.MainActivity"
             android:enabled="true" />
 
         <activity android:name=".views.activitys.SocialLoginActivity"

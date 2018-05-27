@@ -30,6 +30,7 @@ public class MeProfileManager {
     private MeProfileManager(Context context) {
         // 레포지토리 오픈
         this.helper = new DBHelper(context);
+        this.helper.open();
     }
 
     public void setCertification(MeProfileObject profile) {
@@ -56,14 +57,16 @@ public class MeProfileManager {
 
         if(cs.moveToNext()) {
             // Profile 을 생성합니다.
-            MeProfileObject profile = new MeProfileObject(
-                    cs.getString(0),
-                    cs.getString(1),
-                    cs.getString(2),
-                    cs.getString(3)
-            );
+            String kakaoId = cs.getString(0);
+            String nickname = cs.getString(1);
+            String profileIcon = cs.getString(2);
+            String pin = cs.getString(3);
 
-            return profile;
+            if(kakaoId == null || nickname == null || profileIcon == null || pin == null) {
+                return null;
+            } else {
+                return new MeProfileObject(kakaoId, nickname, profileIcon, pin);
+            }
         } else {
             return null;
         }

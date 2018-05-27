@@ -2,15 +2,12 @@ package kr.saintdev.project0402.views.fragments.auth;
 
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.kakao.network.ErrorResult;
 import com.kakao.usermgmt.UserManagement;
@@ -31,7 +28,7 @@ import kr.saintdev.project0402.modulesv2.tasks.BackgroundWork;
 import kr.saintdev.project0402.modulesv2.tasks.OnBackgroundWorkListener;
 import kr.saintdev.project0402.modulesv2.tasks.http.HttpRequester;
 import kr.saintdev.project0402.modulesv2.tasks.http.HttpResponseObject;
-import kr.saintdev.project0402.views.activitys.MainActivity;
+import kr.saintdev.project0402.views.activitysv2.MainActivity;
 import kr.saintdev.project0402.views.activitysv2.AuthActivity;
 import kr.saintdev.project0402.views.fragments.SuperFragment;
 import kr.saintdev.project0402.views.window.dialog.DialogManager;
@@ -137,10 +134,10 @@ public class LoadingFragment extends SuperFragment {
         public void onSuccess(int requestCode, BackgroundWork worker) {
             HttpResponseObject httpResp = (HttpResponseObject) worker.getResult();
 
-            if(httpResp.isErrorOccurred()) {
+            if(httpResp.getResponseResultCode() != InternetConst.HTTP_OK) {
                 // 서버 요청 오류
                 dm.setTitle("Internal server error");
-                dm.setDescription("계정 생성에 실패했습니다!\n" + httpResp.getErrorMessage());
+                dm.setDescription("계정 생성에 실패했습니다!");
                 dm.show();
             } else {
                 Intent startActivity = new Intent(control, MainActivity.class);
