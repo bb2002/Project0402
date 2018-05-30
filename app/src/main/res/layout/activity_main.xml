@@ -55,6 +55,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:id="@+id/main_buttons_tags"
         android:orientation="horizontal"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
@@ -76,24 +77,16 @@
             android:textColor="@color/color_white"/>
     </LinearLayout>
 
-<!--
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/main_content"
-        android:orientation="horizontal"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true">
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/main_buttons_addcommand"
-            android:text="명령어 등록"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/main_buttons_listcommand"
-            android:text="명령어 목록"/>
-    </LinearLayout> -->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:id="@+id/main_buttons_logout"
+        android:layout_alignEnd="@+id/main_buttons_tags"
+        android:layout_below="@+id/main_buttons_tags"
+        android:layout_marginTop="16dp"
+        android:background="@null"
+        android:text="로그아웃"
+        android:textColor="@color/color_white"
+        android:textSize="12sp" />
 
 </RelativeLayout>

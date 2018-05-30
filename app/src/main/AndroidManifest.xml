@@ -7,13 +7,14 @@
 
     <application
         android:allowBackup="true"
-        android:name=".modulesv2.components.kakao.GlobalApplication"
+        android:name=".models.components.kakao.GlobalApplication"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".views.activitysv2.AuthActivity">
+        <activity android:name=".views.activitys.AuthActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,13 +22,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".views.activitysv2.MainActivity"
+        <activity android:name=".views.activitys.MainActivity"
             android:enabled="true" />
 
         <activity android:name=".views.activitys.SocialLoginActivity"
-            android:enabled="true" />
-
-        <activity android:name=".views.activitys.AddCommandActivity"
             android:enabled="true" />
 
         <activity android:name=".views.activitys.AddVoiceCommandActivity"
@@ -43,6 +41,13 @@
             android:enabled="true" />
 
         <!-- V2 Activitys 05 26 -->
+        <activity android:name=".views.activitys.AddCommandActivity"
+            android:enabled="true"
+            android:screenOrientation="portrait"/>
+
+        <activity android:name=".views.activitys.ShowCommandActivity"
+            android:enabled="true"
+            android:screenOrientation="portrait" />
 
         <meta-data android:name="com.kakao.sdk.AppKey"
             android:value="287b2db3fccf3b00205e17fdbfc41cf7" />

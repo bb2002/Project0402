@@ -15,8 +15,8 @@ import com.kakao.auth.Session;
 import com.kakao.util.exception.KakaoException;
 
 import kr.saintdev.project0402.R;
-import kr.saintdev.project0402.modulesv2.components.libs.DebugOnly;
-import kr.saintdev.project0402.views.activitysv2.AuthActivity;
+import kr.saintdev.project0402.models.components.libs.DebugOnly;
+import kr.saintdev.project0402.views.activitys.AuthActivity;
 import kr.saintdev.project0402.views.fragments.SuperFragment;
 import kr.saintdev.project0402.views.window.dialog.DialogManager;
 import kr.saintdev.project0402.views.window.dialog.clicklistener.OnYesClickListener;

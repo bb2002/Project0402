@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:id="@+id/show_commands_header">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/add_command_title"
+            android:text="명령어 목록"
+            android:textSize="18sp"
+            android:textColor="#333333"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/add_command_subtitle"
+            android:text="이 계정에 등록된 명령어를 봅니다."
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            />
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/add_command_run"
+        android:text="명령어 실행"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimaryDark"
+        android:textColor="@color/color_white"
+        />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/show_commands_list"
+        android:layout_margin="16dp"
+        android:layout_below="@id/show_commands_header"
+        android:choiceMode="none"
+        android:layout_above="@id/add_command_run"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/show_commands_empty"
+        android:text="등록된 명령어가 없습니다."
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#333333"
+        android:visibility="gone"/>
+</RelativeLayout>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/add_command_title"
+            android:text="음성 명령 입력"
+            android:textSize="18sp"
+            android:textColor="#333333"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/add_command_subtitle"
+            android:text="이 명령어에 대응하는 목소리를 입력합니다."
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_voice_container"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:gravity="center">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="명령어"
+            android:id="@+id/add_voice_title"
+            android:textSize="18sp"
+            android:textColor="#333333"
+            android:layout_margin="16dp"
+            android:textStyle="bold"/>
+
+        <ImageButton
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/add_voice_record"
+            android:src="@drawable/ic_mic"
+            android:scaleType="centerInside"
+            android:background="@drawable/circle_black"
+            android:padding="20dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/add_voice_status"
+            android:text="마이크 버튼을 누르세요."
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="16dp"/>
+        <ProgressBar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/add_voice_progress"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="8dp"
+            android:max="15"
+            android:progress="0"/>
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_voice_save"
+        android:text="저장"
+        android:visibility="invisible"
+        android:paddingLeft="32dp"
+        android:paddingRight="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/add_voice_container"
+        android:layout_alignParentRight="true"
+        android:background="@color/color_white"
+        android:textColor="#18a920"/>
+
+</RelativeLayout>

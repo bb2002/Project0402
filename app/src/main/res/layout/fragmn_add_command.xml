@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/color_white">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/add_command_title"
+            android:text="새 명령어 등록"
+            android:textSize="18sp"
+            android:textColor="#333333"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/add_command_subtitle"
+            android:text="Narre 에 새로운 명령어를 등록합니다."
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_command_container"
+        android:orientation="vertical"
+        android:layout_centerVertical="true"
+        android:gravity="center">
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/colorPrimaryDark"
+            android:layout_margin="16dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="여기에 새로운 명령어를 입력하세요."
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:textColor="#333333"
+            android:gravity="center"/>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/add_command_editor"
+            android:textSize="14sp"
+            android:padding="8dp"
+            android:hint="ex) 볼륨 높여줘"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="8dp"
+            android:background="@null"
+            android:singleLine="true"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/colorPrimaryDark"
+            android:layout_margin="16dp" />
+    </LinearLayout>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/add_command_next"
+        android:text="다음으로 이동"
+        android:paddingLeft="32dp"
+        android:paddingRight="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_below="@id/add_command_container"
+        android:layout_alignParentRight="true"
+        android:background="@color/color_white"
+        android:textColor="#18a920"/>
+</RelativeLayout>

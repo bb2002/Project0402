@@ -13,10 +13,10 @@ import java.io.File;
 import java.io.IOException;
 
 import kr.saintdev.project0402.R;
-import kr.saintdev.project0402.modules.workspace.task.OnWorkTaskListener;
-import kr.saintdev.project0402.modules.workspace.task.SingleWorkTask;
-import kr.saintdev.project0402.modules.workspace.work.Work;
-import kr.saintdev.project0402.modules.workspace.work.implem.TTSWork;
+import kr.saintdev.project0402.models.tasks.BackgroundWork;
+import kr.saintdev.project0402.models.tasks.OnBackgroundWorkListener;
+import kr.saintdev.project0402.models.tasks.tts.TTS;
+import kr.saintdev.project0402.models.tasks.tts.TTSObject;
 
 /**
  * Created by yuuki on 18. 4. 15.
@@ -38,19 +38,18 @@ public class CommandPlayActivity extends AppCompatActivity {
         this.view = findViewById(R.id.play_command_view);
 
         // 해당 command 를 TTS 를 통해 음성 합성을 시도합니다.
-        TTSWork work = new TTSWork(this, this.command);
-        SingleWorkTask task = new SingleWorkTask(new OnWorkListener());
-        task.execute(work);
+        TTS tts = new TTS(this.command, 0x0, new OnBackgroundWorkHandler(), this);
+        tts.execute();
 
         this.view.setText("렌더링 중...");
     }
 
-    class OnWorkListener implements OnWorkTaskListener {
+    class OnBackgroundWorkHandler implements OnBackgroundWorkListener {
         @Override
-        public void onTaskListener(Work[] result) {
-            TTSWork work = (TTSWork) result[0];
+        public void onSuccess(int requestCode, BackgroundWork worker) {
+            TTSObject work = (TTSObject) worker.getResult();
 
-            File ttsFile = work.getResultObject();
+            File ttsFile = work.getMp3File();
             if(ttsFile == null) {
                 // 오류가 발생한거 같다.
                 Toast.makeText(getApplicationContext(), "오류가 발생했습니다.", Toast.LENGTH_SHORT).show();
@@ -75,7 +74,7 @@ public class CommandPlayActivity extends AppCompatActivity {
         }
 
         @Override
-        public void onProcessedUpdate(int now, int all) {
+        public void onFailed(int requestCode, Exception ex) {
 
         }
     }
